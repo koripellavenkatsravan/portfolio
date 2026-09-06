@@ -1,0 +1,12 @@
+# Sravan — Koripella Venkat Sravan
+
+Portfolio of Koripella Venkat Sravan ("Sravan"), a full-stack software developer (MERN stack, Java, AI-assisted workflows).
+
+## What this page offers
+- About: shipped a live production booking platform for a real family business (KBS Beauty Saloon, bookings up 46%)
+- Skills: JavaScript, Java, Python, React, Node.js, Express, MongoDB, MySQL, Tailwind, AI tooling (Claude, Gemini API, Emergent, Replit)
+- How I Ship With AI: a deliberate Brief → Spec → Build → Review → Ship pipeline
+- Projects: KBS Beauty Saloon (https://kbsbeautysaloon.shop/) and an AI-Powered Habit Tracker (Gemini API)
+- Education: B.E. Computer Science & Design, R.M.K. Engineering College, Anna University (May 2025, CGPA 8.20)
+- Certifications: Meta Front-End, Google AI Fundamentals, IBM Python for Data Science
+- Contact: venkatsravan2003@gmail.com
