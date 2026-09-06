@@ -1,6 +1,9 @@
 import { useRef } from "react";
 import { ArrowUpRight, CheckCircle2, Github } from "lucide-react";
 import Reveal from "./Reveal";
+import WordReveal from "./WordReveal";
+import CountUp from "./CountUp";
+import Magnetic from "./Magnetic";
 
 function BrowserMock({ url, img, alt, link, testId }) {
   const ref = useRef(null);
@@ -64,15 +67,12 @@ function StackChips({ items }) {
 }
 
 const KBS_BEATS = [
-  ["Problem", "Appointments ran on phone calls and walk-ins only."],
-  [
-    "Solution",
-    "A self-service booking platform with customer auth, an admin dashboard and a payments page.",
-  ],
-  [
-    "Outcome",
-    "Bookings up 46% — live for months, still maintained and improved post-launch.",
-  ],
+  { k: "Problem", v: "Appointments ran on phone calls and walk-ins only." },
+  {
+    k: "Solution",
+    v: "A self-service booking platform with customer auth, an admin dashboard and a payments page.",
+  },
+  { k: "Outcome", v: "outcome" },
 ];
 
 const HABIT_CHECKS = [
@@ -87,10 +87,12 @@ export default function Projects() {
     <section id="projects" data-testid="projects-section" className="projects">
       <div className="wrap">
         <div className="section-head">
-          <Reveal>
-            <h2 className="section-h2">Selected work.</h2>
-          </Reveal>
-          <Reveal delay={90}>
+          <WordReveal
+            as="h2"
+            className="section-h2"
+            parts={[{ t: "Selected work." }]}
+          />
+          <Reveal delay={140}>
             <p className="section-sub">
               Two projects. Both real, both shipped, both still alive.
             </p>
@@ -121,26 +123,41 @@ export default function Projects() {
                   items={["React.js", "Node.js", "Express.js", "MongoDB", "JWT"]}
                 />
               </Reveal>
-              <Reveal delay={150}>
-                <div className="beats">
-                  {KBS_BEATS.map(([k, v]) => (
-                    <p key={k} className="beat">
-                      <b>{k}</b>
-                      <span>{v}</span>
+              <div className="beats">
+                {KBS_BEATS.map((b, idx) => (
+                  <Reveal key={b.k} delay={150 + idx * 110}>
+                    <p className="beat" style={{ margin: 0 }}>
+                      <b>{b.k}</b>
+                      <span>
+                        {b.v === "outcome" ? (
+                          <>
+                            Bookings up{" "}
+                            <b className="stat-accent">
+                              <CountUp to={46} />%
+                            </b>{" "}
+                            — live for months, still maintained and improved
+                            post-launch.
+                          </>
+                        ) : (
+                          b.v
+                        )}
+                      </span>
                     </p>
-                  ))}
-                </div>
-              </Reveal>
-              <Reveal delay={220}>
-                <a
-                  data-testid="kbs-visit-btn"
-                  href="https://kbsbeautysaloon.shop/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                >
-                  Visit live site <ArrowUpRight size={16} />
-                </a>
+                  </Reveal>
+                ))}
+              </div>
+              <Reveal delay={480}>
+                <Magnetic>
+                  <a
+                    data-testid="kbs-visit-btn"
+                    href="https://kbsbeautysaloon.shop/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
+                    Visit live site <ArrowUpRight size={16} />
+                  </a>
+                </Magnetic>
               </Reveal>
             </div>
           </div>
@@ -184,16 +201,18 @@ export default function Projects() {
                 ))}
               </div>
               <Reveal delay={550}>
-                <a
-                  data-testid="habit-github-btn"
-                  href="https://github.com/koripellavenkatsravan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ background: "#1d1d1f", boxShadow: "0 10px 24px rgba(0,0,0,.25)" }}
-                >
-                  <Github size={16} /> View on GitHub
-                </a>
+                <Magnetic>
+                  <a
+                    data-testid="habit-github-btn"
+                    href="https://github.com/koripellavenkatsravan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                    style={{ background: "#1d1d1f", boxShadow: "0 10px 24px rgba(0,0,0,.25)" }}
+                  >
+                    <Github size={16} /> View on GitHub
+                  </a>
+                </Magnetic>
               </Reveal>
             </div>
           </div>

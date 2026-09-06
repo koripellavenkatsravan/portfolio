@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
+import WordReveal from "./WordReveal";
 
 const CERTS = [
   {
@@ -15,7 +16,8 @@ const CERTS = [
     name: "Google AI Fundamentals",
     issuer: "Google, via Coursera",
     date: null,
-    logo: "https://cdn.simpleicons.org/google",
+    logo: "/assets/google-logo.png",
+    wide: true,
     link: "https://drive.google.com/file/d/1K-PGYlkZJXdd36v5k0Tj295pALXIn4oE/view?usp=sharing",
     accent: "rgba(66, 133, 244, 0.65)",
     testId: "cert-google",
@@ -33,15 +35,21 @@ const CERTS = [
 
 export default function Certifications() {
   return (
-    <section id="certs" data-testid="certs-section" className="certs-panel">
+    <section
+      id="certs"
+      data-testid="certs-section"
+      className="certs-panel"
+      data-dark="true"
+    >
       <div className="wrap">
         <div className="section-head">
-          <Reveal>
-            <h2 className="section-h2" style={{ color: "#f5f5f7" }}>
-              Certifications.
-            </h2>
-          </Reveal>
-          <Reveal delay={90}>
+          <WordReveal
+            as="h2"
+            className="section-h2"
+            style={{ color: "#f5f5f7" }}
+            parts={[{ t: "Certifications." }]}
+          />
+          <Reveal delay={140}>
             <p className="section-sub">
               Structured learning, verified — from Meta, Google and IBM.
             </p>
@@ -57,7 +65,12 @@ export default function Certifications() {
               >
                 <div className="cert-inner">
                   <span className="cert-badge">
-                    <img src={c.logo} alt={`${c.issuer.split(",")[0]} logo`} loading="lazy" />
+                    <img
+                      src={c.logo}
+                      alt={`${c.issuer.split(",")[0]} logo`}
+                      className={c.wide ? "cert-logo-wide" : ""}
+                      loading="lazy"
+                    />
                   </span>
                   <h3 className="cert-title">{c.name}</h3>
                   <p className="cert-meta">

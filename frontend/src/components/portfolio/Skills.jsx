@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import WordReveal from "./WordReveal";
 
 const SI = "https://cdn.simpleicons.org";
 const BADGE = new Set(["openjdk", "express", "anthropic", "aws"]);
@@ -96,12 +97,15 @@ function Logo({ slug, size = 26 }) {
 export default function Skills() {
   return (
     <section id="stack" data-testid="stack-section" className="stack">
+      <div className="paper-tex" aria-hidden="true" />
       <div className="wrap">
         <div className="section-head">
-          <Reveal>
-            <h2 className="section-h2">The stack I ship with.</h2>
-          </Reveal>
-          <Reveal delay={90}>
+          <WordReveal
+            as="h2"
+            className="section-h2"
+            parts={[{ t: "The stack I ship with." }]}
+          />
+          <Reveal delay={140}>
             <p className="section-sub">
               Real tools, real production work — from pixel to deployment.
             </p>

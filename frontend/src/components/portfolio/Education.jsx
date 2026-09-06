@@ -2,7 +2,12 @@ import Reveal from "./Reveal";
 
 export default function Education() {
   return (
-    <section id="education" data-testid="education-section" className="edu-panel">
+    <section
+      id="education"
+      data-testid="education-section"
+      className="edu-panel"
+      data-dark="true"
+    >
       <div className="wrap">
         <Reveal>
           <div className="edu-card" data-testid="education-card">

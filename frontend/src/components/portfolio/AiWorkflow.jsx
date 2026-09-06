@@ -1,8 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
+import WordReveal from "./WordReveal";
 
 const SI = "https://cdn.simpleicons.org";
 const STEPS = ["Brief", "Spec", "Build", "Review", "Ship"];
+const PIPE_PATH = "M30 60 C 200 8, 320 112, 500 60 S 800 8, 970 60";
 
 const BUILDING = [
   ["Claude", "everyday coding & debugging", `${SI}/anthropic/ffffff`],
@@ -20,17 +22,24 @@ const SHIPPING = [
 
 export default function AiWorkflow() {
   return (
-    <section id="ai" data-testid="ai-section" className="ai-panel grain">
+    <section
+      id="ai"
+      data-testid="ai-section"
+      className="ai-panel grain"
+      data-dark="true"
+    >
       <div className="wrap">
         <Reveal>
           <p className="ai-eyebrow">
             <span className="dot" /> How I Build
           </p>
         </Reveal>
-        <Reveal delay={80}>
-          <h2>AI speeds the hands. Judgment steers the ship.</h2>
-        </Reveal>
-        <Reveal delay={150}>
+        <WordReveal
+          as="h2"
+          delay={80}
+          parts={[{ t: "AI speeds the hands." }, { t: "Judgment steers the ship." }]}
+        />
+        <Reveal delay={180}>
           <p className="ai-sub">
             I build deliberately with AI tools — and I personally read, run and
             own everything that ships. The tools accelerate the loop; they never
@@ -52,11 +61,32 @@ export default function AiWorkflow() {
                   <stop offset="0.5" stopColor="#5e5ce6" />
                   <stop offset="1" stopColor="#bf5af2" />
                 </linearGradient>
+                <filter id="pulseGlow" x="-300%" y="-300%" width="700%" height="700%">
+                  <feGaussianBlur stdDeviation="5" result="b" />
+                  <feMerge>
+                    <feMergeNode in="b" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
               </defs>
-              <path
-                className="pipeline-path"
-                d="M30 60 C 200 8, 320 112, 500 60 S 800 8, 970 60"
-              />
+              <path className="pipeline-path" d={PIPE_PATH} />
+              <g className="pulse-dots">
+                <circle r="5" fill="#b9b7ff" filter="url(#pulseGlow)">
+                  <animateMotion
+                    dur="4.5s"
+                    repeatCount="indefinite"
+                    path={PIPE_PATH}
+                  />
+                </circle>
+                <circle r="3.2" fill="#5e5ce6" filter="url(#pulseGlow)">
+                  <animateMotion
+                    dur="4.5s"
+                    begin="-2.25s"
+                    repeatCount="indefinite"
+                    path={PIPE_PATH}
+                  />
+                </circle>
+              </g>
             </svg>
             <div className="pipeline-nodes">
               {STEPS.map((s, idx) => (
@@ -74,38 +104,54 @@ export default function AiWorkflow() {
         </Reveal>
 
         <div className="tool-rows">
-          <Reveal delay={100}>
-            <div>
+          <div>
+            <Reveal delay={80}>
               <span className="tool-row-label">Building with</span>
-              <div className="tool-chips" data-testid="ai-building-tools">
-                {BUILDING.map(([name, caption, logo]) => (
-                  <span key={name} className="tool-chip">
+            </Reveal>
+            <div className="tool-chips" data-testid="ai-building-tools">
+              {BUILDING.map(([name, caption, logo], idx) => (
+                <Reveal
+                  as="span"
+                  key={name}
+                  delay={140 + idx * 80}
+                  style={{ display: "inline-block" }}
+                >
+                  <span className="tool-chip">
                     <span className="tdot" />
-                    {logo && <img src={logo} width={14} height={14} alt="" loading="lazy" />}
+                    {logo && (
+                      <img src={logo} width={14} height={14} alt="" loading="lazy" />
+                    )}
                     {name}
                     <small>— {caption}</small>
                   </span>
-                ))}
-              </div>
+                </Reveal>
+              ))}
             </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <div>
+          </div>
+          <div>
+            <Reveal delay={120}>
               <span className="tool-row-label">Shipping with</span>
-              <div className="tool-chips" data-testid="ai-shipping-tools">
-                {SHIPPING.map(([name, logo], idx) => (
-                  <span key={name} style={{ display: "contents" }}>
-                    {idx > 0 && <ArrowRight size={15} className="tool-arrow" />}
-                    <span className="tool-chip">
-                      <span className="tdot" />
-                      {logo && <img src={logo} width={14} height={14} alt="" loading="lazy" />}
-                      {name}
-                    </span>
+            </Reveal>
+            <div className="tool-chips" data-testid="ai-shipping-tools">
+              {SHIPPING.map(([name, logo], idx) => (
+                <Reveal
+                  as="span"
+                  key={name}
+                  delay={200 + idx * 120}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 10 }}
+                >
+                  {idx > 0 && <ArrowRight size={15} className="tool-arrow" />}
+                  <span className="tool-chip">
+                    <span className="tdot" />
+                    {logo && (
+                      <img src={logo} width={14} height={14} alt="" loading="lazy" />
+                    )}
+                    {name}
                   </span>
-                ))}
-              </div>
+                </Reveal>
+              ))}
             </div>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

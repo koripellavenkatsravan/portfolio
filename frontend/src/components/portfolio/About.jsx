@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import WordReveal from "./WordReveal";
 import SocialRow from "./SocialIcons";
 
 const PARAS = [
@@ -12,19 +13,22 @@ export default function About() {
   return (
     <section id="about" data-testid="about-section" className="about">
       <div className="wrap">
-        <Reveal>
-          <h2 className="section-h2">
-            Turning everyday friction into{" "}
-            <span className="grad-word">dependable</span> software.
-          </h2>
-        </Reveal>
+        <WordReveal
+          as="h2"
+          className="section-h2"
+          parts={[
+            { t: "Turning everyday friction into" },
+            { t: "dependable", cls: "grad-word" },
+            { t: "software." },
+          ]}
+        />
         {PARAS.map((p, idx) => (
           <Reveal key={idx} delay={80 + idx * 90}>
             <p className="about-p">{p}</p>
           </Reveal>
         ))}
       </div>
-      <div className="about-dark-zone">
+      <div className="about-dark-zone" data-dark="true">
         <div className="wrap about-dark-inner">
           <Reveal>
             <p className="about-social-title">Find me around the web</p>

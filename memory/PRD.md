@@ -16,7 +16,15 @@ Single-page portfolio for Koripella Venkat Sravan ("Sravan"), full-stack develop
 - /app/frontend/public/resume.pdf — PLACEHOLDER PDF (user to upload final resume)
 - Tech/cert logos served from simpleicons CDN; AWS from devicons CDN; IBM from Wikimedia (both removed from simple-icons)
 
-## Implemented (2026-09-06)
+## Implemented (2026-09-06, v2 motion pass)
+- Hero v2 (per user's reference screenshot): left-aligned text column ("Hi, I'm" / "Sravan." stacked, rotating "Currently, a {role}"), right photo card with 4 floating colorful icon badges (Sparkles/User/Check/Code), "Venkat Sravan" + "Chennai · India" labels, SRAVAN DEV marquee behind both
+- Motion pass: scroll-linked parallax (headline > photo > badges > marquee speeds), word-by-word headline reveals (About/Stack/AI/Projects/Certs/Contact), magnetic buttons (Resume/Send/Visit/GitHub/Back-to-top), 0→46% count-up in KBS outcome, ambient gradient drift on all dark panels, cursor spotlight on dark sections only, spring-overshoot nav pill, staggered beats/checklist/chips
+- "How I Build" signature section: ambient drifting mesh, marching-dash path + 2 traveling glow dots (SMIL animateMotion), sequential node pulse with scale, staggered tool chips
+- Stack section: paper texture (noise + fiber lines) instead of flat white
+- Footer v2: gradient hairline, copy-email chip (Copied state), back-to-top pill, social row right, credit "Sravan · Built with care." (no Chennai)
+- Certifications: user-provided Google logo (centered in white badge)
+- resume.pdf is now the REAL uploaded resume (was placeholder)
+- prefers-reduced-motion: parallax/spotlight/drift/pulse dots disabled, fades intact
 - Hero: SRAVAN DEV marquee behind headline + photo card, rotating roles (2.5s crossfade), Resume download + "See my work", floating glass shapes, hero footer line
 - Navbar: always-dark glass capsule, sliding active highlight, scroll shrink + inner highlight, resume download icon, day/night toggle
 - About: verbatim copy, gradient accent word, light→dark tonal handoff, dot-grid dark zone, social row (GitHub/LinkedIn/LeetCode/Gmail) visible at rest
@@ -36,7 +44,6 @@ Single-page portfolio for Koripella Venkat Sravan ("Sravan"), full-stack develop
 - AWS/IBM logo 404s found and fixed
 
 ## Backlog (prioritized)
-- P0: Replace /app/frontend/public/resume.pdf with Sravan's real resume PDF (user uploading next)
 - P1: Swap Lucide social icons for user's uploaded brand PNGs (github.png, linkedin.png, envelope.png, LeetCode logo) when provided
 - P1: Add Emergent/Vercel/Render/Cursor/Copilot logo files when user provides (currently text chips / CDN icons)
 - P2: Direct habit-tracker repo URL for "View on GitHub" (currently links to GitHub profile)

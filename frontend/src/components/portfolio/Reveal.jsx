@@ -5,6 +5,7 @@ export default function Reveal({
   delay = 0,
   className = "",
   as: Tag = "div",
+  style,
   ...rest
 }) {
   const ref = useRef(null);
@@ -28,7 +29,7 @@ export default function Reveal({
   return (
     <Tag
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: `${delay}ms`, ...style }}
       className={`reveal ${className}`}
       {...rest}
     >

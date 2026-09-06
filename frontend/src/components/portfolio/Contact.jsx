@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { FileText, Mail, Send } from "lucide-react";
+import { ArrowUp, Check, FileText, Mail, Send } from "lucide-react";
 import Reveal from "./Reveal";
+import WordReveal from "./WordReveal";
+import Magnetic from "./Magnetic";
 import SocialRow from "./SocialIcons";
 
 const EMAIL = "venkatsravan2003@gmail.com";
@@ -8,6 +10,7 @@ const EMAIL = "venkatsravan2003@gmail.com";
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -23,23 +26,39 @@ export default function Contact() {
     setSent(true);
   };
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch (err) {
+      /* clipboard unavailable */
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <section id="contact" data-testid="contact-section" className="contact-panel">
+    <section
+      id="contact"
+      data-testid="contact-section"
+      className="contact-panel"
+      data-dark="true"
+    >
       <div className="wrap">
         <div className="section-head">
-          <Reveal>
-            <h2 className="section-h2" style={{ color: "#f5f5f7" }}>
-              Let&rsquo;s talk.
-            </h2>
-          </Reveal>
-          <Reveal delay={90}>
+          <WordReveal
+            as="h2"
+            className="section-h2"
+            style={{ color: "#f5f5f7" }}
+            parts={[{ t: "Let's talk." }]}
+          />
+          <Reveal delay={120}>
             <p className="section-sub">
               A role, a project, or just a hello — my inbox is open.
             </p>
           </Reveal>
         </div>
 
-        <Reveal delay={150}>
+        <Reveal delay={180}>
           <form
             className="contact-form"
             data-testid="contact-form"
@@ -71,13 +90,15 @@ export default function Contact() {
               required
             />
             <div>
-              <button
-                data-testid="contact-send-btn"
-                type="submit"
-                className="btn-primary"
-              >
-                <Send size={15} /> Send Message
-              </button>
+              <Magnetic>
+                <button
+                  data-testid="contact-send-btn"
+                  type="submit"
+                  className="btn-primary"
+                >
+                  <Send size={15} /> Send Message
+                </button>
+              </Magnetic>
             </div>
             {sent && (
               <p data-testid="contact-success" className="contact-success">
@@ -94,14 +115,19 @@ export default function Contact() {
           <div className="foot-main">
             <div>
               <h3>Let&rsquo;s build something.</h3>
+              <p className="foot-sub">
+                A role, a collab, or a wild idea — I read every message,
+                usually within a day.
+              </p>
               <div className="foot-actions">
-                <a
+                <button
                   data-testid="footer-email-chip"
-                  className="mail-chip"
-                  href={`mailto:${EMAIL}`}
+                  className={`mail-chip ${copied ? "copied" : ""}`}
+                  onClick={copyEmail}
                 >
-                  <Mail size={14} /> {EMAIL}
-                </a>
+                  {copied ? <Check size={14} /> : <Mail size={14} />}
+                  {copied ? "Copied to clipboard" : EMAIL}
+                </button>
                 <a
                   data-testid="footer-resume-link"
                   className="resume-link"
@@ -112,9 +138,25 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-            <SocialRow />
+            <div className="foot-right">
+              <SocialRow />
+              <Magnetic strength={0.25}>
+                <button
+                  data-testid="back-to-top"
+                  className="back-top"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  <ArrowUp size={14} /> Back to top
+                </button>
+              </Magnetic>
+            </div>
           </div>
-          <p className="credit">Sravan · Built with care in Chennai.</p>
+          <div className="foot-bottom">
+            <span>Sravan · Built with care.</span>
+            <span>React · Node.js · a lot of care about the details</span>
+          </div>
         </div>
       </footer>
     </section>

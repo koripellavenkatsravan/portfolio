@@ -1,5 +1,6 @@
 import Seo from "@/components/Seo";
 import CustomCursor from "@/components/portfolio/CustomCursor";
+import CursorSpotlight from "@/components/portfolio/CursorSpotlight";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
@@ -33,6 +34,7 @@ export default function App() {
         }}
       />
       <CustomCursor />
+      <CursorSpotlight />
       <ScrollProgress />
       <Navbar />
       <main>
