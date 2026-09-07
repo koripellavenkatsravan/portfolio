@@ -16,6 +16,9 @@ Single-page portfolio for Koripella Venkat Sravan ("Sravan"), full-stack develop
 - /app/frontend/public/resume.pdf — PLACEHOLDER PDF (user to upload final resume)
 - Tech/cert logos served from simpleicons CDN; AWS from devicons CDN; IBM from Wikimedia (both removed from simple-icons)
 
+## Implemented (2026-09-07, v4 liquid-glass nav)
+- Navbar transparency pass: capsule background alpha lowered (0.42 base / 0.55 scrolled) with blur boosted to 40px saturate(220%) + inner top/bottom specular highlights — content scrolls visibly behind the bar as a soft frost, Apple-style; mobile menu button matched
+
 ## Implemented (2026-09-07, v3 mobile + publications + Inc)
 - Color restraint: monochrome-first, single blue accent everywhere (icon badges now glass w/ blue glyphs, blue-only gradients, pipeline/glows/spotlight all blue)
 - Resume is now "View Resume" everywhere (nav, hero, footer) — opens PDF in new tab, external-link icon
