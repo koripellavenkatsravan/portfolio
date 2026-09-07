@@ -10,7 +10,9 @@ import AiWorkflow from "@/components/portfolio/AiWorkflow";
 import Projects from "@/components/portfolio/Projects";
 import Education from "@/components/portfolio/Education";
 import Certifications from "@/components/portfolio/Certifications";
+import Publications from "@/components/portfolio/Publications";
 import Contact from "@/components/portfolio/Contact";
+import Inc from "@/components/portfolio/Inc";
 
 export default function App() {
   return (
@@ -45,8 +47,10 @@ export default function App() {
         <Projects />
         <Education />
         <Certifications />
+        <Publications />
         <Contact />
       </main>
+      <Inc />
     </div>
   );
 }

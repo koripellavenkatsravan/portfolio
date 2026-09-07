@@ -83,7 +83,7 @@ const CATS = [
 
 function Logo({ slug, size = 26 }) {
   if (!slug) return null;
-  const src = OVERRIDES[slug] || `${SI}/${slug}`;
+  const src = `/assets/logos/${slug}.svg`;
   if (BADGE.has(slug)) {
     return (
       <span className="logo-badge">

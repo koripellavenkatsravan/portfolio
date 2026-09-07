@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUp, Check, FileText, Mail, Send } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Check, Mail, Send } from "lucide-react";
 import Reveal from "./Reveal";
 import WordReveal from "./WordReveal";
 import Magnetic from "./Magnetic";
@@ -70,6 +70,9 @@ export default function Contact() {
               placeholder="Name"
               value={form.name}
               onChange={set("name")}
+              onFocus={(e) =>
+                e.target.scrollIntoView({ block: "center", behavior: "smooth" })
+              }
               required
             />
             <input
@@ -79,6 +82,9 @@ export default function Contact() {
               placeholder="Email"
               value={form.email}
               onChange={set("email")}
+              onFocus={(e) =>
+                e.target.scrollIntoView({ block: "center", behavior: "smooth" })
+              }
               required
             />
             <textarea
@@ -87,6 +93,9 @@ export default function Contact() {
               placeholder="Message"
               value={form.message}
               onChange={set("message")}
+              onFocus={(e) =>
+                e.target.scrollIntoView({ block: "center", behavior: "smooth" })
+              }
               required
             />
             <div>
@@ -132,9 +141,10 @@ export default function Contact() {
                   data-testid="footer-resume-link"
                   className="resume-link"
                   href="/resume.pdf"
-                  download="Koripella_Venkat_Sravan_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <FileText size={14} /> Download resume
+                  <ArrowUpRight size={14} /> View resume
                 </a>
               </div>
             </div>

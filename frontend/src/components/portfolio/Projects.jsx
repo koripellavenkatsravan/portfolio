@@ -105,7 +105,7 @@ export default function Projects() {
             <Reveal className="proj-mock">
               <BrowserMock
                 url="kbsbeautysaloon.shop"
-                img="/assets/kbs-saloon.png"
+                img="/assets/kbs-saloon.webp"
                 alt="KBS Beauty Saloon booking platform homepage"
                 link="https://kbsbeautysaloon.shop/"
                 testId="kbs-mockup"
@@ -169,7 +169,7 @@ export default function Projects() {
             <Reveal className="proj-mock">
               <BrowserMock
                 url="ai-habit-tracker"
-                img="/assets/habit-tracker.png"
+                img="/assets/habit-tracker.webp"
                 alt="AI-Powered Habit Tracker dashboard with AI coaching"
                 testId="habit-mockup"
               />

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
+  ArrowUpRight,
   Check,
   ChevronRight,
   Code2,
-  FileDown,
   Sparkles,
   UserRound,
 } from "lucide-react";
@@ -101,10 +101,11 @@ export default function Hero() {
               <a
                 data-testid="hero-resume-btn"
                 href="/resume.pdf"
-                download="Koripella_Venkat_Sravan_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary"
               >
-                Resume <FileDown size={16} />
+                View Resume <ArrowUpRight size={16} />
               </a>
             </Magnetic>
             <button
@@ -123,13 +124,12 @@ export default function Hero() {
             <div ref={photoRef} className="photo-parallax">
               <div className="photo-card grain" data-testid="hero-photo-card">
                 <img
-                  src="/assets/headshot.png"
+                  src="/assets/headshot.webp"
                   alt="Portrait of Koripella Venkat Sravan"
                   className="photo-img"
                 />
                 <div className="photo-meta">
                   <span className="photo-label">Venkat Sravan</span>
-                  <span className="photo-label">Chennai · India</span>
                 </div>
               </div>
             </div>

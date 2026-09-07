@@ -25,7 +25,7 @@ export default function CursorSpotlight() {
     const loop = () => {
       x += (tx - x) * 0.12;
       y += (ty - y) * 0.12;
-      el.style.background = `radial-gradient(520px at ${x}px ${y}px, rgba(94, 92, 230, 0.11), rgba(0, 113, 227, 0.05) 45%, transparent 68%)`;
+      el.style.background = `radial-gradient(520px at ${x}px ${y}px, rgba(10, 132, 255, 0.11), rgba(0, 113, 227, 0.05) 45%, transparent 68%)`;
       raf = requestAnimationFrame(loop);
     };
 

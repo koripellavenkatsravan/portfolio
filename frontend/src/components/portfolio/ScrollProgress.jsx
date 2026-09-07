@@ -7,6 +7,7 @@ const SECTIONS = [
   "projects",
   "education",
   "certs",
+  "publications",
   "contact",
 ];
 

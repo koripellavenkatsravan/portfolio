@@ -7,17 +7,17 @@ const STEPS = ["Brief", "Spec", "Build", "Review", "Ship"];
 const PIPE_PATH = "M30 60 C 200 8, 320 112, 500 60 S 800 8, 970 60";
 
 const BUILDING = [
-  ["Claude", "everyday coding & debugging", `${SI}/anthropic/ffffff`],
+  ["Claude", "everyday coding & debugging", "/assets/logos/anthropic-white.svg"],
   ["Cursor", "AI pair programming", null],
   ["Emergent", "full-stack prototyping", null],
-  ["Replit", "fast experiments", `${SI}/replit`],
+  ["Replit", "fast experiments", "/assets/logos/replit.svg"],
   ["GitHub Copilot", "inline suggestions", null],
 ];
 
 const SHIPPING = [
-  ["GitHub", `${SI}/github/ffffff`],
-  ["Vercel", `${SI}/vercel/ffffff`],
-  ["Render", `${SI}/render/ffffff`],
+  ["GitHub", "/assets/logos/github-white.svg"],
+  ["Vercel", "/assets/logos/vercel-white.svg"],
+  ["Render", "/assets/logos/render-white.svg"],
 ];
 
 export default function AiWorkflow() {
@@ -57,9 +57,9 @@ export default function AiWorkflow() {
             >
               <defs>
                 <linearGradient id="pipeGrad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stopColor="#0071e3" />
-                  <stop offset="0.5" stopColor="#5e5ce6" />
-                  <stop offset="1" stopColor="#bf5af2" />
+                  <stop offset="0" stopColor="#64b5ff" />
+                  <stop offset="0.5" stopColor="#0a84ff" />
+                  <stop offset="1" stopColor="#0071e3" />
                 </linearGradient>
                 <filter id="pulseGlow" x="-300%" y="-300%" width="700%" height="700%">
                   <feGaussianBlur stdDeviation="5" result="b" />
@@ -71,14 +71,14 @@ export default function AiWorkflow() {
               </defs>
               <path className="pipeline-path" d={PIPE_PATH} />
               <g className="pulse-dots">
-                <circle r="5" fill="#b9b7ff" filter="url(#pulseGlow)">
+                <circle r="5" fill="#9ecbff" filter="url(#pulseGlow)">
                   <animateMotion
                     dur="4.5s"
                     repeatCount="indefinite"
                     path={PIPE_PATH}
                   />
                 </circle>
-                <circle r="3.2" fill="#5e5ce6" filter="url(#pulseGlow)">
+                <circle r="3.2" fill="#4da3ff" filter="url(#pulseGlow)">
                   <animateMotion
                     dur="4.5s"
                     begin="-2.25s"

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Download, Moon, Sun } from "lucide-react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
 export const NAV_LINKS = [
   { id: "home", label: "Home" },
@@ -15,6 +15,7 @@ export default function Navbar() {
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [dark, setDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const linkRefs = useRef({});
   const [hl, setHl] = useState({ x: 0, w: 0, o: 0 });
 
@@ -46,8 +47,16 @@ export default function Navbar() {
     if (el) setHl({ x: el.offsetLeft, w: el.offsetWidth, o: 1 });
   }, [active, scrolled]);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const go = (id) => {
     setActive(id);
+    setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -58,10 +67,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      data-testid="navbar"
-      className={`nav-capsule ${scrolled ? "nav-scrolled" : ""}`}
-    >
+    <>
+      <nav
+        data-testid="navbar"
+        className={`nav-capsule ${scrolled ? "nav-scrolled" : ""}`}
+      >
       <div className="nav-track">
         <span
           className="nav-highlight"
@@ -86,12 +96,13 @@ export default function Navbar() {
         <a
           data-testid="nav-resume"
           href="/resume.pdf"
-          download="Koripella_Venkat_Sravan_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="nav-icon"
-          aria-label="Download resume"
-          title="Resume"
+          aria-label="View resume"
+          title="View Resume"
         >
-          <Download size={15} />
+          <ArrowUpRight size={15} />
         </a>
         <button
           data-testid="nav-theme-toggle"
@@ -102,6 +113,51 @@ export default function Navbar() {
           {dark ? <Sun size={15} /> : <Moon size={15} />}
         </button>
       </div>
-    </nav>
+      </nav>
+
+      <button
+        data-testid="mobile-menu-btn"
+        className="mobile-nav-btn"
+        onClick={() => setMenuOpen((v) => !v)}
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+      >
+        {menuOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+      <div
+        className={`mobile-panel ${menuOpen ? "open" : ""}`}
+        data-testid="mobile-panel"
+        aria-hidden={!menuOpen}
+      >
+        <div className="mobile-panel-links">
+          {NAV_LINKS.map((l) => (
+            <button
+              key={l.id}
+              data-testid={`mobile-nav-${l.id}`}
+              className="mp-link"
+              onClick={() => go(l.id)}
+            >
+              {l.label}
+            </button>
+          ))}
+          <a
+            data-testid="mobile-nav-resume"
+            className="mp-link mp-link-accent"
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Resume <ArrowUpRight size={22} />
+          </a>
+        </div>
+        <button
+          data-testid="mobile-theme-toggle"
+          className="mp-theme"
+          onClick={toggleTheme}
+        >
+          {dark ? <Sun size={16} /> : <Moon size={16} />}
+          {dark ? "Switch to day mode" : "Switch to night mode"}
+        </button>
+      </div>
+    </>
   );
 }

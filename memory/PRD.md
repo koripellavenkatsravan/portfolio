@@ -16,6 +16,16 @@ Single-page portfolio for Koripella Venkat Sravan ("Sravan"), full-stack develop
 - /app/frontend/public/resume.pdf — PLACEHOLDER PDF (user to upload final resume)
 - Tech/cert logos served from simpleicons CDN; AWS from devicons CDN; IBM from Wikimedia (both removed from simple-icons)
 
+## Implemented (2026-09-07, v3 mobile + publications + Inc)
+- Color restraint: monochrome-first, single blue accent everywhere (icon badges now glass w/ blue glyphs, blue-only gradients, pipeline/glows/spotlight all blue)
+- Resume is now "View Resume" everywhere (nav, hero, footer) — opens PDF in new tab, external-link icon
+- Dark-mode SRAVAN DEV marquee contrast fixed (visible at 12% opacity)
+- "Chennai · India" removed from photo card
+- All logos/images are local static assets (/public/assets) — zero backend/CDN dependency at runtime; big images converted to WebP (1.1MB → 65KB etc.)
+- Mobile-first pass: hamburger → full-height glass menu (single toggle button, animated panel), 44px+ touch targets, stacked hero/projects/footer, swipeable skills marquee, input focus scroll-into-view, tested at 390px
+- Publications section: glass card, 2025 journal article (liver cancer detection, Taylor & Francis), authors/journal credit line, "Read the paper" link
+- Inc assistant: frontend-only rule-based chatbot, floating glass orb button (cropped user logo), quick actions + typed Q&A with canned replies + section-scroll actions, bottom-sheet on mobile
+
 ## Implemented (2026-09-06, v2 motion pass)
 - Hero v2 (per user's reference screenshot): left-aligned text column ("Hi, I'm" / "Sravan." stacked, rotating "Currently, a {role}"), right photo card with 4 floating colorful icon badges (Sparkles/User/Check/Code), "Venkat Sravan" + "Chennai · India" labels, SRAVAN DEV marquee behind both
 - Motion pass: scroll-linked parallax (headline > photo > badges > marquee speeds), word-by-word headline reveals (About/Stack/AI/Projects/Certs/Contact), magnetic buttons (Resume/Send/Visit/GitHub/Back-to-top), 0→46% count-up in KBS outcome, ambient gradient drift on all dark panels, cursor spotlight on dark sections only, spring-overshoot nav pill, staggered beats/checklist/chips
